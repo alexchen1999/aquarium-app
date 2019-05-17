@@ -8,7 +8,8 @@ var fishSchema = new Schema({
     tempLowerBound: Number, //Fahrenheit
     tempUpperBound: Number,
     pHLowerBound: Number,
-    pHUpperBound: Number
+    pHUpperBound: Number,
+    recommendedTankSize: Number
 });
 
 module.exports = mongoose.model('Fish', fishSchema);
