@@ -23,15 +23,17 @@ exports.get_fish = function(req, res) {
 };
 
 exports.create_fish = function(req, res) {
+    console.log('reaches here');
+    console.log(req.body.commonName);
     let fish = new Fish({
         commonName: req.body.commonName,
         scientificName: req.body.scientificName,
-        length = req.body.length,
-        tempLowerBound = req.body.tmpLow,
-        tempUpperBound = req.body.tmpHigh,
-        pHLowerBound = req.body.pHLow,
-        pHUpperBound = req.body.pHHigh,
-        recommendedTankSize = req.body.recTankSize
+        length: req.body.len,
+        tempLowerBound: req.body.tmpLow,
+        tempUpperBound: req.body.tmpHigh,
+        pHLowerBound: req.body.pHLow,
+        pHUpperBound: req.body.pHHigh,
+        recommendedTankSize: req.body.recTankSize
     });
 
     fish.save(function(err){

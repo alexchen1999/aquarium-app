@@ -3,9 +3,9 @@ var app = express();
 
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
-var routes = require('./routes/Routes');
+var routes = require('./routes/Routes.js');
 
-app.use(bodyParser.urlencoded({extended: true}));
+app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
 mongoose.connect('mongodb://localhost:27017/myDatabase');
