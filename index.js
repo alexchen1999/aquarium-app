@@ -1,6 +1,7 @@
 var express = require('express');
 var app = express();
 
+app.set('view engine', 'ejs');
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var routes = require('./routes/Routes.js');
