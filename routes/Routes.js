@@ -21,4 +21,9 @@ router.post('/updateFishQuantity', aquariumController.update_fish_quantity);
 router.post('/updateAquarium', aquariumController.update_aquarium);
 router.post('/deleteAquarium', aquariumController.delete_aquarium);
 
+//render home page
+router.get('/', function(req, res) {
+    res.render('home');
+});
+
 module.exports = router;
