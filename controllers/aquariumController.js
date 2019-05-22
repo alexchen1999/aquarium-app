@@ -38,6 +38,50 @@ exports.create_aquarium = function(req, res) {
     });
 };
 
+exports.add_fish = function(req, res) {
+    var name = req.body.name;
+    var variety = req.body.variety;
+    var quantity = req.body.quantity;
+
+    Aquarium.findOneAndUpdate({name: name}, {$push: {'fish': {variety, quantity}}}, 
+    {new: true}, function(err, aquarium) {
+        if (err) {
+            console.log('Error in adding fish');
+        } else {
+            res.send(aquarium);
+        }
+    });
+};
+
+exports.remove_fish = function(req, res) {
+    var name = req.body.name;
+
+    Aquarium.findOneAndUpdate({name: name}, {$pull: {'fish': {variety: req.body.variety}}}, 
+    {new: true}, function(err, aquarium) {
+        if (err) {
+            console.log('Error in removing fish');
+        } else {
+            res.send(aquarium);
+        }
+    });
+};
+
+
+exports.update_fish_quantity = function(req, res) {
+    var name = req.body.name;
+    var variety = req.body.variety;
+    var quantity = req.body.quantity;
+
+    Aquarium.findOneAndUpdate({name: name}, {$set: {'fish.$[element].quantity': quantity}}, 
+    {new: true, arrayFilters:[{'element.variety': variety}]}, function(err, aquarium) {
+        if (err) {
+            console.log('Error in updating quantity of ' + variety);
+        } else {
+            res.send(aquarium);
+        }
+    });
+};
+
 exports.update_aquarium = function(req, res) {
     Aquarium.findOneAndUpdate({name: req.body.name}, {$set: req.body}, {new: true}, function(err, aquarium){
         if (err) {

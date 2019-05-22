@@ -15,6 +15,9 @@ router.post('/deleteFish', fishController.delete_fish);
 router.get('/getAllAquariums', aquariumController.get_all_aquariums);
 router.get('/getAquarium', aquariumController.get_aquarium);
 router.post('/createAquarium', aquariumController.create_aquarium);
+router.post('/addFish', aquariumController.add_fish);
+router.post('/removeFish', aquariumController.remove_fish);
+router.post('/updateFishQuantity', aquariumController.update_fish_quantity);
 router.post('/updateAquarium', aquariumController.update_aquarium);
 router.post('/deleteAquarium', aquariumController.delete_aquarium);
 
