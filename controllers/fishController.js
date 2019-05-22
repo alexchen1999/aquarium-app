@@ -7,7 +7,7 @@ exports.get_all_fish = function(req, res) {
         if (err){
             console.log('Error: could not get fish');
         } else {
-            res.send(fish);
+            res.render('allfish',{fish: fish});
         }
     });
 };
