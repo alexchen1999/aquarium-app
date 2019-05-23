@@ -9,6 +9,8 @@ var routes = require('./routes/Routes.js');
 app.use(bodyParser.urlencoded({extended: false}));
 app.use(bodyParser.json());
 
+app.use('/public', express.static('public'));
+
 mongoose.connect('mongodb://localhost:27017/myDatabase');
 
 app.use('/', routes);
