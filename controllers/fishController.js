@@ -7,7 +7,7 @@ exports.get_all_fish = function(req, res) {
         if (err){
             console.log('Error: could not get fish');
         } else {
-            res.render('allfish',{fish: fish});
+            res.render('allfish', {fish: fish});
         }
     });
 };
@@ -40,8 +40,8 @@ exports.create_fish = function(req, res) {
         if (err) {
             console.log('Error: fish could not be created');
         } else {
-            res.send('Fish successfully added');
-        }
+            res.render('fishadded', {fish: fish});
+        };
     });
 };
 

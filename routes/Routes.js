@@ -26,4 +26,9 @@ router.get('/', function(req, res) {
     res.render('home');
 });
 
+//render create fish page
+router.get('/createFishForm', function(req, res) {
+    res.render('createfish');
+});
+
 module.exports = router;
