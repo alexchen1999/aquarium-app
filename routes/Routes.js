@@ -31,4 +31,9 @@ router.get('/createFishForm', function(req, res) {
     res.render('createfish');
 });
 
+//render create aquarium page
+router.get('/createAquariumForm', function(req, res) {
+    res.render('createaquarium');
+})
+
 module.exports = router;

@@ -7,7 +7,7 @@ exports.get_all_aquariums = function(req, res){
         if (err){
             console.log('Error in getting all aquariums');
         } else {
-            res.send(aquariums);
+            res.render('allaquariums', {aquariums: aquariums});
         }
     });
 };
@@ -33,7 +33,7 @@ exports.create_aquarium = function(req, res) {
         if (err) {
             console.log('Error in creating this aquarium');
         } else {
-            res.send('Aquarium saved successfully');
+            res.render('aquariumadded', {aquarium: aquarium});
         }
     });
 };
