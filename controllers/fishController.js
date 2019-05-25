@@ -13,11 +13,11 @@ exports.get_all_fish = function(req, res) {
 };
 
 exports.get_fish = function(req, res) {
-    Fish.findOne({commonName: req.query.name}, function(err, fish){
+    Fish.findOne({commonName: req.query.commonName}, function(err, fish){
         if (err){
             console.log('Error: fish was not found');
         } else {
-            res.send(fish);
+            res.render('showfish', {fish: fish});
         }
     });
 };
