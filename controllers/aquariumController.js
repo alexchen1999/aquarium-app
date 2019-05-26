@@ -13,11 +13,11 @@ exports.get_all_aquariums = function(req, res){
 };
 
 exports.get_aquarium = function(req, res) {
-    Aquarium.findOne({name: req.body.name}, function(err, aquarium){
+    Aquarium.findOne({name: req.query.name}, function(err, aquarium){
         if (err) {
             console.log('Error in finding the specified aquarium');
         } else {
-            res.send(aquarium);
+            res.render('showaquarium', {aquarium: aquarium});
         }
     });
 };

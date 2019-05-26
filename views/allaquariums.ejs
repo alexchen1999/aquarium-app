@@ -10,7 +10,7 @@
 <body>
     <h1>Your Aquariums</h1>
     <% aquariums.forEach(function(aquarium) { %>
-        <%= aquarium.name %> <br>
+        <a href="/getAquarium?name=<%=aquarium.name%>"><%= aquarium.name %></a> <br>
     <% }) %> 
 
     <a href="/">Return to Homepage</a>
