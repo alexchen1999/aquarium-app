@@ -12,6 +12,16 @@ exports.get_all_fish = function(req, res) {
     });
 };
 
+exports.get_all_fish_data = function(req, res) {
+    Fish.find({}, function(err, fish){
+        if (err){
+            console.log('Error: could not get fish');
+        } else {
+            res.send(fish);
+        }
+    });
+};
+
 exports.get_fish = function(req, res) {
     Fish.findOne({commonName: req.query.commonName}, function(err, fish){
         if (err){
