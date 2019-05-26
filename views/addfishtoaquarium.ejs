@@ -15,7 +15,8 @@
                 url: '/getAllFishData',
                 success: function(fish) {
                     $.each(fish, function(i, f) {
-                        $fish.append('<li>name: ' + f.commonName + '</li>')
+                        var name = f.commonName;
+                        $fish.append("<option value=\"" + name + "\">" + name + "</option");
                     });
                 }
             });
@@ -29,7 +30,8 @@
                 url: '/getAllAquariumData',
                 success: function(aquariums) {
                     $.each(aquariums, function(i, aquarium) {
-                        $aquariums.append('<li>name: ' + aquarium.name + '</li>')
+                        var name = aquarium.name;
+                        $aquariums.append("<option value=\"" + name + "\">" + name + '</option')
                     });
                 }
             });
@@ -41,10 +43,15 @@
 </head>
 <body>
     <h1>Hello</h1>
-    Select a Fish: <br>
-    <ul id="fish"></ul> <br>
-    Select an Aquarium: <br>
-    <ul id="aquariums"></ul> <br>
+    <form action="/addFish" method="POST">
+        Select a Fish Variety: <br>
+        <select id="fish" name="variety"></select> <br>
+        Type in a Quantity: <br>
+        <input type="number" name="quantity"> <br>
+        Select an Aquarium: <br>
+        <select id="aquariums" name="name"></select> <br>
+        <input type="submit" value="Submit">
+    </form>
 </body>
 
 

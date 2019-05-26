@@ -50,15 +50,20 @@ exports.create_aquarium = function(req, res) {
 
 exports.add_fish = function(req, res) {
     var name = req.body.name;
+    console.log(name);
     var variety = req.body.variety;
+    console.log(variety);
     var quantity = req.body.quantity;
+    console.log(quantity);
 
     Aquarium.findOneAndUpdate({name: name}, {$push: {'fish': {variety, quantity}}}, 
     {new: true}, function(err, aquarium) {
         if (err) {
             console.log('Error in adding fish');
         } else {
-            res.send(aquarium);
+            console.log(aquarium);
+            console.log(aquarium.name);
+            res.render('fishsuccessfullyadded', {aquarium: aquarium, variety: variety, quantity: quantity});
         }
     });
 };
