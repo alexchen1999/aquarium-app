@@ -12,6 +12,16 @@ exports.get_all_aquariums = function(req, res){
     });
 };
 
+exports.get_all_aquariums_data = function(req, res){
+    Aquarium.find({}, function(err, aquariums){
+        if (err){
+            console.log('Error in getting all aquariums');
+        } else {
+            res.send(aquariums);
+        }
+    });
+};
+
 exports.get_aquarium = function(req, res) {
     Aquarium.findOne({name: req.query.name}, function(err, aquarium){
         if (err) {
