@@ -8,17 +8,21 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script type="text/javascript">
     $(function() {
-        var $stocking = $("#stocking");
+        var $data = $("#data");
         $.ajax({
             type: 'GET',
-            url: '/getStockingLevel?name=<%=aquarium.name%>',
-            success: function(stocking_level) {
-                $stocking.append(stocking_level + "%");
+            url: '/getAquariumData?name=<%=aquarium.name%>',
+            success: function(data) {
+                $data.append("Stocking Level: " + data.stocking_level + "% <br>");
+                $data.append("Recommended Temperature Range: " + data.tempLowerBoundAvg 
+                + " - " + data.tempUpperBoundAvg + "&deg; <br>");
+                $data.append("Recommended pH Range: " + data.pHLowerBoundAvg + 
+                " - " + data.pHUpperBoundAvg + "<br>");
             }
         });
     });
-    
     </script>
+
     <title><%=aquarium.name%></title>
 </head>
 <body>
@@ -33,7 +37,7 @@
             <%  }); %>
         <% } %>
         Capacity: <%= aquarium.capacity %> gallons <br>
-        <div id="stocking">Stocking Level: </div>
+        <div id="data"></div>
         <a href="/">Back to Homepage</a>
     </div>
 </body>

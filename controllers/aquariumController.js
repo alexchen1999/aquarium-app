@@ -34,12 +34,18 @@ exports.get_aquarium = function(req, res) {
     });
 };
 
-exports.get_stocking_level = function(req, res) {
+exports.get_aquarium_data = function(req, res) {
     Aquarium.findOne({name: req.query.name})
     .exec()
     .then(async (aquarium) => {
         var totalLength = 0;
         var capacity = aquarium.capacity;
+        var tempLowerBoundSum = 0;
+        var tempUpperBoundSum = 0;
+        var pHLowerBoundSum = 0;
+        var pHUpperBoundSum = 0;
+        var count = 0;
+
         for (const fish of aquarium.fish) {
 
             var quantity = fish.quantity;
@@ -48,7 +54,12 @@ exports.get_stocking_level = function(req, res) {
             findOne({commonName: fish.variety})
             .exec()
             .then((fish) => {
+                count++;
                 totalLength += fish.length * quantity;
+                tempLowerBoundSum += fish.tempLowerBound;
+                tempUpperBoundSum += fish.tempUpperBound;
+                pHLowerBoundSum += fish.pHLowerBound;
+                pHUpperBoundSum += fish.pHUpperBound;
             })
             .catch((err) => {
                 console.log(err);
@@ -57,7 +68,14 @@ exports.get_stocking_level = function(req, res) {
         console.log(totalLength);
         console.log(capacity);
         var stocking_level = "" + (totalLength / capacity) * 100;
-        res.send(stocking_level);
+        var tempLowerBoundAvg = "" + (tempLowerBoundSum / count);
+        var tempUpperBoundAvg = "" + (tempUpperBoundSum / count);
+        var pHLowerBoundAvg = "" + (pHLowerBoundSum / count);
+        var pHUpperBoundAvg = "" + (pHUpperBoundSum / count);
+        var data = {stocking_level, tempLowerBoundAvg,
+        tempUpperBoundAvg, pHLowerBoundAvg, pHUpperBoundAvg};
+        console.log(data);
+        res.send(data);
     })
     .catch((err) => { 
         console.log(err);

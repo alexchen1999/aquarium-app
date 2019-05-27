@@ -16,7 +16,7 @@ router.post('/deleteFish', fishController.delete_fish);
 router.get('/getAllAquariums', aquariumController.get_all_aquariums);
 router.get('/getAllAquariumData', aquariumController.get_all_aquariums_data);
 router.get('/getAquarium', aquariumController.get_aquarium);
-router.get('/getStockingLevel', aquariumController.get_stocking_level);
+router.get('/getAquariumData', aquariumController.get_aquarium_data);
 router.post('/createAquarium', aquariumController.create_aquarium);
 router.post('/addFish', aquariumController.add_fish);
 router.post('/removeFish', aquariumController.remove_fish);
