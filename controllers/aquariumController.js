@@ -1,5 +1,7 @@
 const Aquarium = require('../models/Aquarium.js');
+const Fish = require('../models/Fish.js')
 var mongoose = require('mongoose');
+mongoose.Promise = require('bluebird');
 mongoose.connect('mongodb://localhost:27017/myDatabase');
 
 exports.get_all_aquariums = function(req, res){
@@ -32,10 +34,40 @@ exports.get_aquarium = function(req, res) {
     });
 };
 
+exports.get_stocking_level = function(req, res) {
+    Aquarium.findOne({name: req.query.name})
+    .exec()
+    .then(async (aquarium) => {
+        var totalLength = 0;
+        var capacity = aquarium.capacity;
+        for (const fish of aquarium.fish) {
+
+            var quantity = fish.quantity;
+
+            const f = await Fish.
+            findOne({commonName: fish.variety})
+            .exec()
+            .then((fish) => {
+                totalLength += fish.length * quantity;
+            })
+            .catch((err) => {
+                console.log(err);
+            });
+        }
+        console.log(totalLength);
+        console.log(capacity);
+        var stocking_level = "" + (totalLength / capacity) * 100;
+        res.send(stocking_level);
+    })
+    .catch((err) => { 
+        console.log(err);
+    })
+};
+
 exports.create_aquarium = function(req, res) {
     let aquarium = new Aquarium({
         name: req.body.name,
-        size: req.body.size,
+        capacity: req.body.capacity,
         fish: []
     });
 

@@ -13,8 +13,18 @@
         <form action=/createFish method=POST>
             Common Name: <br>
             <input type="text" name="commonName"><br>
-            <!--Scientific Name: <br>
-            <input type="text" name="scientificName"><br>-->
+            Scientific Name: <br>
+            <input type="text" name="scientificName"> <br>
+            Length (in Inches): <br>
+            <input type="number" min="1" step="0.1" name="length"> <br>
+            Temperature Range (in Fahrenheit): <br>
+            <input type="number" min="40" max="85" name="tempLowerBound"> to 
+            <input type="number" min="40" max="85" name= "tempUpperBound"> <br>
+            pH Range: <br>
+            <input type="number" min="6.0" max="9.0" step="0.1" name="pHLowerBound"> to 
+            <input type="number" min="6.0" max="9.0" step="0.1" name= "pHUpperBound"> <br>
+            Recommended Tank Size (in US Gallons): <br>
+            <input type="number" min="5" name="recommendedTankSize"> <br>
             <input type="submit" value="Submit">
         </form>
     </div>

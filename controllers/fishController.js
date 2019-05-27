@@ -38,12 +38,12 @@ exports.create_fish = function(req, res) {
     let fish = new Fish({
         commonName: req.body.commonName,
         scientificName: req.body.scientificName,
-        length: req.body.len,
-        tempLowerBound: req.body.tmpLow,
-        tempUpperBound: req.body.tmpHigh,
-        pHLowerBound: req.body.pHLow,
-        pHUpperBound: req.body.pHHigh,
-        recommendedTankSize: req.body.recTankSize
+        length: req.body.length,
+        tempLowerBound: req.body.tempLowerBound,
+        tempUpperBound: req.body.tempUpperBound,
+        pHLowerBound: req.body.pHLowerBound,
+        pHUpperBound: req.body.pHUpperBound,
+        recommendedTankSize: req.body.recommendedTankSize
     });
 
     fish.save(function(err){
