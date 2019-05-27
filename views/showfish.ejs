@@ -9,5 +9,13 @@
 </head>
 <body>
     <h1> <%= fish.commonName %></h1>
+    <div>
+        Common Name: <%= fish.commonName %> <br>
+        Scientific Name: <i><%= fish.scientificName %></i> <br>
+        Length: <%= fish.length %> " <br>
+        Temperature Range: <%= fish.tempLowerBound %> - <%= fish.tempHigherBound %>F <br>
+        pH Range: <%= fish.pHLowerBound %> - <%= fish.pHHigherBound %> <br>
+        
+    </div>
 </body>
 </html>

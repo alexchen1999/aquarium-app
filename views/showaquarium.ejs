@@ -15,9 +15,10 @@
             This tank is empty. Please add some fish to it! <br>
         <% } else { %>
             <% fishInTank.forEach(function(fish) { %>
-                    Name: <%= fish.name %>, Quantity: <%= fish.quantity %> <br>
+                    Name: <%= fish.variety %>, Quantity: <%= fish.quantity %> <br>
             <%  }); %>
         <% } %>
+        capacity: <%= aquarium.capacity %> gallons <br>
         <a href="/">Back to Homepage</a>
     </div>
 </body>
