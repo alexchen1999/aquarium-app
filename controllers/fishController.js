@@ -66,12 +66,12 @@ exports.update_fish_info = function(req, res) {
 };
 
 exports.delete_fish = function(req, res) {
-    Fish.findOneAndDelete({commonName: req.query.commonName}, function(err, fish){
+    Fish.findOneAndDelete({commonName: req.body.commonName}, function(err, fish){
         if (err) {
             console.log('Error in deleting this fish');
         } else {
             console.log('Fish successfully deleted from database');
-            res.send(fish);
+            res.render('fishdeleted', {fish: fish});
         }
     });
 };
