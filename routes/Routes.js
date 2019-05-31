@@ -46,6 +46,10 @@ router.get('/addFishToAquarium', function(req, res) {
 
 router.get('/deleteFishForm', function(req, res) {
     res.render('deletefish');
-})
+});
+
+router.get('/deleteAquariumForm', function(req, res) {
+    res.render('deleteaquarium');
+});
 
 module.exports = router;

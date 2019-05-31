@@ -164,7 +164,7 @@ exports.delete_aquarium = function(req, res) {
             console.log('Error in deleting this aquarium');
         } else {
             console.log('Aquarium successfully deleted');
-            res.send(aquarium);
+            res.render('aquariumdeleted', {aquarium: aquarium});
         }
     });
 };
