@@ -7,6 +7,7 @@
     <link rel="stylesheet" type="text/css" href="../public/bootstrap-4.1.3-dist/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
     <script type="text/javascript">
+
     $(function() {
         var $data = $("#data");
         $.ajax({
@@ -21,6 +22,7 @@
             }
         });
     });
+
     </script>
 
     <title><%=aquarium.name%></title>
@@ -38,6 +40,10 @@
         <% } %>
         Capacity: <%= aquarium.capacity %> gallons <br>
         <div id="data"></div>
+        <form action="/removeFishFromAquariumForm" method="GET">
+            <input type="hidden" name="name" value="<%= aquarium.name %>">
+            <input type="submit" value="Remove Fish from <%= aquarium.name %>">
+        </form>
         <a href="/">Back to Homepage</a>
     </div>
 </body>

@@ -52,4 +52,8 @@ router.get('/deleteAquariumForm', function(req, res) {
     res.render('deleteaquarium');
 });
 
+router.get('/removeFishFromAquariumForm', function(req, res) {
+    res.render('removefish', {query: req.query});
+});
+
 module.exports = router;

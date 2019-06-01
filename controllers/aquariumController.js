@@ -72,7 +72,7 @@ exports.get_aquarium_data = function(req, res) {
         var tempUpperBoundAvg = "" + (tempUpperBoundSum / count);
         var pHLowerBoundAvg = "" + (pHLowerBoundSum / count);
         var pHUpperBoundAvg = "" + (pHUpperBoundSum / count);
-        var data = {stocking_level, tempLowerBoundAvg,
+        var data = {aquarium, stocking_level, tempLowerBoundAvg,
         tempUpperBoundAvg, pHLowerBoundAvg, pHUpperBoundAvg};
         console.log(data);
         res.send(data);
@@ -119,14 +119,14 @@ exports.add_fish = function(req, res) {
 };
 
 exports.remove_fish = function(req, res) {
-    var name = req.body.name;
+    var name = req.query.name;
 
     Aquarium.findOneAndUpdate({name: name}, {$pull: {'fish': {variety: req.body.variety}}}, 
     {new: true}, function(err, aquarium) {
         if (err) {
             console.log('Error in removing fish');
         } else {
-            res.send(aquarium);
+            res.redirect('/getAquarium?name=' + name);
         }
     });
 };
