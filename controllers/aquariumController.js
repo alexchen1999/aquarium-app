@@ -132,6 +132,9 @@ exports.remove_fish = function(req, res) {
 };
 
 
+//unnecessary
+/*
+
 exports.update_fish_quantity = function(req, res) {
     var name = req.body.name;
     var variety = req.body.variety;
@@ -146,6 +149,8 @@ exports.update_fish_quantity = function(req, res) {
         }
     });
 };
+
+*/
 
 exports.update_aquarium = function(req, res) {
     Aquarium.findOneAndUpdate({name: req.body.name}, {$set: req.body}, {new: true}, function(err, aquarium){

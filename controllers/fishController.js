@@ -43,7 +43,8 @@ exports.create_fish = function(req, res) {
         tempUpperBound: req.body.tempUpperBound,
         pHLowerBound: req.body.pHLowerBound,
         pHUpperBound: req.body.pHUpperBound,
-        recommendedTankSize: req.body.recommendedTankSize
+        recommendedTankSize: req.body.recommendedTankSize,
+        image: req.body.image
     });
 
     fish.save(function(err){

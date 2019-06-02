@@ -9,7 +9,8 @@ var fishSchema = new Schema({
     tempUpperBound: Number,
     pHLowerBound: Number,
     pHUpperBound: Number,
-    recommendedTankSize: Number
+    recommendedTankSize: Number,
+    image: String
 });
 
 module.exports = mongoose.model('Fish', fishSchema);
